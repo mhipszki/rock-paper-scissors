@@ -1,6 +1,7 @@
 'use strict';
 
 var comparatorFactory = require('../src/js/comparator-factory');
+var errors = require('../src/js/comparator-errors');
 
 describe('symbol comparator', function () {
 
@@ -27,21 +28,19 @@ describe('symbol comparator', function () {
 	describe('when provided with invalid symbols', function () {
 
 		it('should complain to only accept string symbols', function () {
-			var error = 'invalid arguments, symbols must be strings';
-
 			function doComparisonWithInvalidFirstArg () {
 				var a;
 				var b = 'B';
 				return compare(a, b);
 			}
-			expect(doComparisonWithInvalidFirstArg).to.throw(error);
+			expect(doComparisonWithInvalidFirstArg).to.throw(errors.invalidArgs);
 
 			function doComparisonWithInvalidSecondArg () {
 				var a = 'A';
 				var b;
 				return compare(a, b);
 			}
-			expect(doComparisonWithInvalidSecondArg).to.throw(error);
+			expect(doComparisonWithInvalidSecondArg).to.throw(errors.invalidArgs);
 		});
 
 	});
