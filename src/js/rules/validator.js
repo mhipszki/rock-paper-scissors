@@ -1,5 +1,6 @@
 'use strict';
 
+var validateSymbol = require('../symbol/definition/validator');
 var errors = require('./errors');
 
 module.exports = function validate (rules) {
@@ -13,24 +14,16 @@ module.exports = function validate (rules) {
 	}
 
 	symbols.forEach(function (symbol) {
-		var rule = rules[symbol];
-		if (typeof rule !== 'object') {
-			throw new Error(errors.rule.invalidType);
-		}
-		if (!(rule.beats instanceof Array)) {
-			throw new Error(errors.rule.missingBeats);
-		}
+		var definition = rules[symbol];
 
-		if (rule.beats.length === 0) {
-			throw new Error(errors.rule.beats.empty);
-		}
+		validateSymbol(definition);
 
-		var nonExistentSymbolUsed = rule.beats.some(function (beatable) {
+		var nonExistentSymbolUsed = definition.beats.some(function (beatable) {
 			return symbols.indexOf(beatable) === -1;
 		});
 
 		if (nonExistentSymbolUsed) {
-			throw new Error(errors.rule.beats.nonExistentSymbol);
+			throw new Error(errors.symbol.beats.nonExistentSymbol);
 		}
 	});
 

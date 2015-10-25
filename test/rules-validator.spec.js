@@ -42,45 +42,7 @@ describe('rules validator', function () {
 
 	});
 
-	describe('each rule', function () {
-
-		it('must be an object', function () {
-			function validation () {
-				var rules = {
-					'rule defintion': 'not an object'
-				};
-				return validate(rules);
-			}
-			expect(validation).to.throw(errors.rule.invalidType);
-		});
-
-		it('must contain a list of symbols can be beaten by a symbol', function () {
-			function validation () {
-				var rules = {
-					'rule definition': {
-						does: 'not contain list of beatable symbols'
-					}
-				};
-				return validate(rules);
-			}
-			expect(validation).to.throw(errors.rule.missingBeats);
-		});
-
-	});
-
 	describe('any list of beatable symbols', function () {
-
-		it('must contain at least one symbol', function () {
-			function validation () {
-				var rules = {
-					'symbol A': {
-						beats: []
-					}
-				};
-				return validate(rules);
-			}
-			expect(validation).to.throw(errors.rule.beats.empty);
-		});
 
 		it('must only contain defined symbols', function () {
 			function validation () {
@@ -91,7 +53,7 @@ describe('rules validator', function () {
 				};
 				return validate(rules);
 			}
-			expect(validation).to.throw(errors.rule.beats.nonExistentSymbol);
+			expect(validation).to.throw(errors.symbol.beats.nonExistentSymbol);
 		});
 
 	});

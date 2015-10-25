@@ -1,7 +1,5 @@
 # TODOS
 
-- split rules validator into rules definition and symbol definition validators
-- use symbol definition validator in rules validator
 - use symbol definition validator when constructing a new Symbol
 - rename rules to symbol list
 - use symbol objects as input in symbol comparator function
