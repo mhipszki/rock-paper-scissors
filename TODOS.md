@@ -1,7 +1,5 @@
 # TODOS
 
-- use symbol objects as input in symbol comparator function
-
 - extend rules structure to define beatable symbols with a corresponding winning message
 
 - add outcome decorator to transform an outcome into a human readable message e.g. 0 => 'tie', 1 => 'A has beaten B'
