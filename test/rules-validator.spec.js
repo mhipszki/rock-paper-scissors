@@ -1,7 +1,7 @@
 'use strict';
 
 var errors = {
-	invalidType: 'rules must be an object',
+	invalidType: 'rule definitions must be provieded in an object',
 	invalidRuleType: 'each rule must be an object',
 	noRulesDefined: 'rules must contain at least one rule'
 };
