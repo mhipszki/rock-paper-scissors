@@ -1,8 +1,6 @@
 'use strict';
 
-var generateComparatorWith = require('./symbol/comparator/factory');
-var generateDecoratorWith = require('./outcome-decorator-factory');
-var validator = require('./symbol/list/validator');
+var generateGameWith = require('./game');
 
 var symbolDefinitions = [
 	{
@@ -26,9 +24,13 @@ var symbolDefinitions = [
 	}
 ];
 
-var compare = generateComparatorWith(symbolDefinitions, validator);
-var decorate = generateDecoratorWith(symbolDefinitions);
+var game = generateGameWith(symbolDefinitions);
 
-console.log('rock', 'scissors', '=>', decorate('rock', 'scissors', compare('rock', 'scissors')));
-console.log('rock', 'paper', '=>', decorate('rock', 'paper', compare('rock', 'paper')));
-console.log('rock', 'rock', '=>', decorate('rock', 'rock', compare('rock', 'rock')));
+game.play('rock', 'scissors');
+console.log('rock', 'scissors', '=>', game.message());
+
+game.play('rock', 'paper');
+console.log('rock', 'paper', '=>', game.message());
+
+game.play('rock', 'rock');
+console.log('rock', 'rock', '=>', game.message());
