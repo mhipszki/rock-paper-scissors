@@ -1,7 +1,5 @@
 # TODOS
 
-- extend symbol definitions to define beatable symbols with a corresponding winning message
-
 - remove duplicate test examples in specs
 
 - use array instead of object wrapper around symbol list

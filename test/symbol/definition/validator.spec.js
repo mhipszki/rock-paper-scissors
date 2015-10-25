@@ -9,8 +9,11 @@ describe('symbol definition validator', function () {
 
 		it('should return true', function () {
 			var definition = {
-				symbol: 'a symbol',
-				beats: ['another symbol']
+				symbol: 'A',
+				beats: [{
+					symbol: 'B',
+					message: 'A beats B'
+				}]
 			};
 			var valid = validate(definition);
 			expect(valid).to.be.true;
@@ -68,6 +71,47 @@ describe('symbol definition validator', function () {
 				return validate(definition);
 			}
 			expect(validation).to.throw(errors.beats.empty);
+		});
+
+	});
+
+	describe('every beatable symbol definition', function () {
+
+		it('must be an object', function () {
+			function validation () {
+				var definition = {
+					symbol: 'a symbol',
+					beats: ['not an object']
+				};
+				return validate(definition);
+			}
+			expect(validation).to.throw(errors.beatable.invalidType);
+		});
+
+		it('should reference a symbol by its name', function () {
+			function validation () {
+				var definition = {
+					symbol: 'a symbol',
+					beats: [{
+						invalid: 'symbol reference'
+					}]
+				};
+				return validate(definition);
+			}
+			expect(validation).to.throw(errors.beatable.missingReference);
+		});
+
+		it('should define a winning message', function () {
+			function validation () {
+				var definition = {
+					symbol: 'a symbol',
+					beats: [{
+						symbol: 'another symbol'
+					}]
+				};
+				return validate(definition);
+			}
+			expect(validation).to.throw(errors.beatable.missingMessage);
 		});
 
 	});

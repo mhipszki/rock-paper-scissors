@@ -15,13 +15,23 @@ module.exports = function validate (list) {
 		throw new Error(errors.empty);
 	}
 
+	function exists(symbol) {
+		// TODO: remove when symbol list becomes an array
+		var definitions = symbols.map(function (key) {
+			return list[key];
+		});
+		return definitions.some(function (definition) {
+			return definition.symbol === symbol;
+		});
+	}
+
 	symbols.forEach(function (symbol) {
 		var definition = list[symbol];
 
 		validateSymbol(definition);
 
 		var nonExistentSymbolUsed = definition.beats.some(function (beatable) {
-			return symbols.indexOf(beatable) === -1;
+			return !exists(beatable.symbol);
 		});
 
 		if (nonExistentSymbolUsed) {

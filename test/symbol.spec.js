@@ -18,8 +18,11 @@ describe('symbol', function () {
 
 	it('should store its definition', function () {
 		var definition = {
-			symbol: 'a symbol',
-			beats: ['another symbol']
+			symbol: 'A',
+			beats: [{
+				symbol: 'B',
+				message: 'A beats B'
+			}]
 		};
 		var symbol = generateSymbolFrom(definition);
 		expect(symbol.definition).to.deep.equal(definition);
@@ -27,8 +30,11 @@ describe('symbol', function () {
 
 	it('should not alter the definition', function () {
 		var definition = {
-			symbol: 'a symbol',
-			beats: ['another symbol']
+			symbol: 'A',
+			beats: [{
+				symbol: 'B',
+				message: 'A beats B'
+			}]
 		};
 		var originalDefinition = JSON.stringify(definition);
 		var symbol = generateSymbolFrom(definition);
@@ -41,11 +47,14 @@ describe('symbol', function () {
 
 			it('should return true', function () {
 				var definition = {
-					symbol: 'a symbol',
-					beats: ['another symbol']
+					symbol: 'A',
+					beats: [{
+						symbol: 'B',
+						message: 'A beats B'
+					}]
 				};
 				var symbol = generateSymbolFrom(definition);
-				var canBeBeaten = symbol.beats('another symbol');
+				var canBeBeaten = symbol.beats('B');
 				expect(canBeBeaten).to.be.true;
 			});
 
@@ -55,11 +64,14 @@ describe('symbol', function () {
 
 			it('should return false', function () {
 				var definition = {
-					symbol: 'a symbol',
-					beats: ['a beatable symbol']
+					symbol: 'A',
+					beats: [{
+						symbol: 'B',
+						message: 'A beats B'
+					}]
 				};
 				var symbol = generateSymbolFrom(definition);
-				var canBeBeaten = symbol.beats('another symbol');
+				var canBeBeaten = symbol.beats('C');
 				expect(canBeBeaten).to.be.false;
 			});
 

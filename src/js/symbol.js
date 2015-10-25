@@ -8,7 +8,9 @@ function Symbol (definition) {
 }
 
 Symbol.prototype.beats = function beats (symbol) {
-	return this.definition.beats.indexOf(symbol) > -1;
+	return this.definition.beats.some(function (beatable) {
+		return beatable.symbol === symbol;
+	});
 };
 
 module.exports = Symbol;

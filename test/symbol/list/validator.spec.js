@@ -10,12 +10,18 @@ describe('symbol list validator', function () {
 		it('should return true', function () {
 			var list = {
 				'symbol A': {
-					symbol: 'symbol A',
-					beats: ['symbol B']
+					symbol: 'A',
+					beats: [{
+						symbol: 'B',
+						message: 'A beats B'
+					}]
 				},
 				'symbol B': {
-					symbol: 'symbol B',
-					beats: ['symbol A']
+					symbol: 'B',
+					beats: [{
+						symbol: 'A',
+						message: 'B beats A'
+					}]
 				}
 			};
 			var result = validate(list);
@@ -50,8 +56,11 @@ describe('symbol list validator', function () {
 			function validation () {
 				var list = {
 					'symbol A': {
-						symbol: 'symbol A',
-						beats: ['symbol B']
+						symbol: 'A',
+						beats: [{
+							symbol: 'B',
+							message: 'A beats B'
+						}]
 					}
 				};
 				return validate(list);

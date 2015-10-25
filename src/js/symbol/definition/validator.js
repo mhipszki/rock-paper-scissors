@@ -23,5 +23,19 @@ module.exports = function validate (definition) {
 		throw new Error(errors.beats.empty);
 	}
 
+	definition.beats.forEach(function (beatable) {
+		if (typeof beatable !== 'object') {
+			throw new Error(errors.beatable.invalidType);
+		}
+
+		if (typeof beatable.symbol === 'undefined') {
+			throw new Error(errors.beatable.missingReference);
+		}
+
+		if (typeof beatable.message === 'undefined') {
+			throw new Error(errors.beatable.missingMessage);
+		}
+	});
+
 	return true;
 };
