@@ -1,6 +1,13 @@
 'use strict';
 
-function validate () {
+var errors = {
+	invalidType: 'rules must be an object'
+};
+
+function validate (rules) {
+	if (typeof rules !== 'object') {
+		throw new Error(errors.invalidType);
+	}
 	return true;
 }
 
@@ -12,6 +19,18 @@ describe('rules validator', function () {
 			var rules = {};
 			var result = validate(rules);
 			expect(result).to.be.true;
+		});
+
+	});
+
+	describe('rules', function () {
+
+		it('must be an object', function () {
+			function validation () {
+				var rules = 'not an object';
+				return validate(rules);
+			}
+			expect(validation).to.throw(errors.invalidType);
 		});
 
 	});
