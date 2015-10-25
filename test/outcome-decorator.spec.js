@@ -7,7 +7,7 @@ var validator = require('../src/js/symbol/list/validator');
 describe('outcome decorator', function () {
 
 	var compare;
-	var decorator;
+	var decorate;
 
 	var definitions = [
 		{ symbol: 'A', beats: [ { symbol: 'B', message: 'A beats B' } ] },
@@ -17,14 +17,14 @@ describe('outcome decorator', function () {
 
 	beforeEach(function () {
 		compare = generateComparatorWith(definitions, validator);
-		decorator = generateDecoratorWith(definitions);
+		decorate = generateDecoratorWith(definitions);
 	});
 
 	describe('when the outcome is a tie', function () {
 
 		it('should return the right message', function () {
 			var outcome = compare('A', 'A');
-			var result = decorator('A', 'A', outcome);
+			var result = decorate(outcome, 'A', 'A');
 			expect(result).to.equal('tie!');
 		});
 
@@ -35,7 +35,7 @@ describe('outcome decorator', function () {
 		it('should return the right message', function () {
 			var message = 'A has won, A beats B!';
 			var outcome = compare('A', 'B');
-			var result = decorator('A', 'B', outcome);
+			var result = decorate(outcome, 'A', 'B');
 			expect(result).to.equal(message);
 		});
 

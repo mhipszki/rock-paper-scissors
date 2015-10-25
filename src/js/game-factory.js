@@ -17,7 +17,7 @@ module.exports = function gameFactory (definitions) {
 	return {
 		play: function (symbolOne, symbolTwo) {
 			outcome = compare(symbolOne, symbolTwo);
-			message = decorate(symbolOne, symbolTwo, outcome);
+			message = decorate(outcome, symbolOne, symbolTwo);
 		},
 		outcome: function () {
 			return outcome;

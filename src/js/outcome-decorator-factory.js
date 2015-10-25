@@ -3,7 +3,7 @@
 var generateFinderWith = require('./symbol/finder-factory');
 
 module.exports = function generateDecoratorWith (definitions) {
-	return function decorator (symbolOne, symbolTwo, outcome) {
+	return function decorator (outcome, symbolOne, symbolTwo) {
 		if (outcome === 0) {
 			return 'tie!';
 		}
