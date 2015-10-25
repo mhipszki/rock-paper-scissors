@@ -27,19 +27,21 @@ describe('symbol comparator', function () {
 	describe('when provided with invalid symbols', function () {
 
 		it('should complain to only accept string symbols', function () {
+			var error = 'invalid arguments, symbols must be strings';
+
 			function doComparisonWithInvalidFirstArg () {
 				var a;
 				var b = 'B';
 				return compare(a, b);
 			}
-			expect(doComparisonWithInvalidFirstArg).to.throw('invalid arguments, symbols must be strings');
+			expect(doComparisonWithInvalidFirstArg).to.throw(error);
 
 			function doComparisonWithInvalidSecondArg () {
 				var a = 'A';
 				var b;
 				return compare(a, b);
 			}
-			expect(doComparisonWithInvalidSecondArg).to.throw('invalid arguments, symbols must be strings');
+			expect(doComparisonWithInvalidSecondArg).to.throw(error);
 		});
 
 	});
