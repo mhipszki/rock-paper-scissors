@@ -5,7 +5,7 @@ var errors = require('./errors');
 
 module.exports = function validate (list) {
 
-	if (typeof list !== 'object') {
+	if (!(list instanceof Array)) {
 		throw new Error(errors.invalidType);
 	}
 
@@ -16,11 +16,7 @@ module.exports = function validate (list) {
 	}
 
 	function exists(symbol) {
-		// TODO: remove when symbol list becomes an array
-		var definitions = symbols.map(function (key) {
-			return list[key];
-		});
-		return definitions.some(function (definition) {
+		return list.some(function (definition) {
 			return definition.symbol === symbol;
 		});
 	}

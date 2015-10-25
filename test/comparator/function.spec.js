@@ -8,11 +8,11 @@ describe('symbol comparator', function () {
 
 	describe('function', function () {
 
-		var symbolDefinitions = {
-			'A': { symbol: 'A', beats: [ { symbol: 'B', message: 'A beats B'}] },
-			'B': { symbol: 'B', beats: [ { symbol: 'C', message: 'B beats C'}] },
-			'C': { symbol: 'C', beats: [ { symbol: 'A', message: 'C beats A'}] }
-		};
+		var symbolDefinitions = [
+			{ symbol: 'A', beats: [ { symbol: 'B', message: 'A beats B'}] },
+			{ symbol: 'B', beats: [ { symbol: 'C', message: 'B beats C'}] },
+			{ symbol: 'C', beats: [ { symbol: 'A', message: 'C beats A'}] }
+		];
 
 		var compare;
 

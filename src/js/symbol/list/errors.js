@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	invalidType: 'symbol definitions must be provided in an object',
+	invalidType: 'symbol list must be an Array',
 	empty: 'symbol list must contain at least one symbol definition',
 	symbol: {
 		beats: {

@@ -7,8 +7,15 @@ function comparatorFactory (symbolDefinitions, validate) {
 
 	validate(symbolDefinitions);
 
+	function findSymbolDefinitionBy (name) {
+		var matches = symbolDefinitions.filter(function (definition) {
+			return definition.symbol === name;
+		});
+		return matches[0];
+	}
+
 	function symbol (name) {
-		var definition = symbolDefinitions[name];
+		var definition = findSymbolDefinitionBy(name);
 		return new Symbol(definition);
 	}
 

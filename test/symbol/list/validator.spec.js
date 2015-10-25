@@ -8,22 +8,19 @@ describe('symbol list validator', function () {
 	describe('when provided with a valid symbol list', function () {
 
 		it('should return true', function () {
-			var list = {
-				'symbol A': {
-					symbol: 'A',
-					beats: [{
-						symbol: 'B',
-						message: 'A beats B'
-					}]
-				},
-				'symbol B': {
+			var list = [{
+				symbol: 'A',
+				beats: [{
 					symbol: 'B',
-					beats: [{
-						symbol: 'A',
-						message: 'B beats A'
-					}]
-				}
-			};
+					message: 'A beats B'
+				}]
+			}, {
+				symbol: 'B',
+				beats: [{
+					symbol: 'A',
+					message: 'B beats A'
+				}]
+			}];
 			var result = validate(list);
 			expect(result).to.be.true;
 		});
@@ -32,9 +29,9 @@ describe('symbol list validator', function () {
 
 	describe('symbol list', function () {
 
-		it('must be an object', function () {
+		it('must be an Array', function () {
 			function validation () {
-				var list = 'not an object';
+				var list = 'not an array';
 				return validate(list);
 			}
 			expect(validation).to.throw(errors.invalidType);
@@ -42,7 +39,7 @@ describe('symbol list validator', function () {
 
 		it('must contain at least one symbol', function () {
 			function validation () {
-				var list = {};
+				var list = [];
 				return validate(list);
 			}
 			expect(validation).to.throw(errors.empty);
@@ -54,15 +51,13 @@ describe('symbol list validator', function () {
 
 		it('must only contain defined symbols', function () {
 			function validation () {
-				var list = {
-					'symbol A': {
-						symbol: 'A',
-						beats: [{
-							symbol: 'B',
-							message: 'A beats B'
-						}]
-					}
-				};
+				var list = [{
+					symbol: 'A',
+					beats: [{
+						symbol: 'B',
+						message: 'A beats B'
+					}]
+				}];
 				return validate(list);
 			}
 			expect(validation).to.throw(errors.symbol.beats.nonExistentSymbol);
