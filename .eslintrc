@@ -8,6 +8,8 @@
 
     "rules": {
 
+		"no-console": 				0,
+
 		// Validate Indentation (4 spaces)
         "indent":                   [ 2, "tab" ],
 
