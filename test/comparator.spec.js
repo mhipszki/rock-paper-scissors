@@ -1,6 +1,6 @@
 'use strict';
 
-var comparatorFactory = require('../src/js/comparator-factory');
+var generateComparatorWith = require('../src/js/comparator-factory');
 var errors = require('../src/js/comparator-errors');
 
 describe('symbol comparator', function () {
@@ -14,7 +14,7 @@ describe('symbol comparator', function () {
 	var compare;
 
 	beforeEach(function () {
-		compare = comparatorFactory(rules);
+		compare = generateComparatorWith(rules);
 	});
 
 	describe('factory', function () {
