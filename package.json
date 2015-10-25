@@ -1,11 +1,17 @@
 {
     "name": "rock-paper-scissors",
     "version": "1.0.0",
+    "author": "Marton Hipszki <mhipszki@gmail.com>",
+    "license": "MIT",
+    "scripts": {
+        "lint": "eslint src/ test/ && echo '\n...linting JS OK\n'"
+    },
     "devDependencies": {
+        "eslint": "^1.7.3",
         "grunt": "0.4.2",
         "grunt-cli": "0.1.13",
-        "grunt-contrib-jshint": "0.10.0",
+        "grunt-contrib-connect": "0.6.0",
         "grunt-contrib-csslint": "0.2.0",
-        "grunt-contrib-connect": "0.6.0"
+        "grunt-contrib-jshint": "0.10.0"
     }
 }
