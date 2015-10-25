@@ -28,9 +28,30 @@ describe('symbol definition validator', function () {
 			expect(validation).to.throw(errors.invalidType);
 		});
 
+		it('should define the symbol\'s name', function () {
+			function validation () {
+				var definition = {
+					no: 'name is defined'
+				};
+				return validate(definition);
+			}
+			expect(validation).to.throw(errors.name.missing);
+		});
+
+		it('should define the symbol\'s name as a string', function () {
+			function validation () {
+				var definition = {
+					symbol: { an: 'object' }
+				};
+				return validate(definition);
+			}
+			expect(validation).to.throw(errors.name.invalidType);
+		});
+
 		it('must contain a list of symbols can be beaten by a symbol', function () {
 			function validation () {
 				var definition = {
+					symbol: 'a symbol',
 					does: 'not contain list of beatable symbols'
 				};
 				return validate(definition);
@@ -41,6 +62,7 @@ describe('symbol definition validator', function () {
 		it('must define at least one beatable symbol', function () {
 			function validation () {
 				var definition = {
+					symbol: 'a symbol',
 					beats: []
 				};
 				return validate(definition);
