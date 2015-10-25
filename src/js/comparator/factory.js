@@ -2,6 +2,14 @@
 
 var errors = require('./errors');
 
+function symbol (definition) {
+	return {
+		beats: function (symbolToBeat) {
+			return definition.beats.indexOf(symbolToBeat) > -1;
+		}
+	};
+}
+
 function comparatorFactory (rules, validate) {
 
 	validate(rules);
@@ -11,12 +19,14 @@ function comparatorFactory (rules, validate) {
 			throw new Error(errors.invalidArgs);
 		}
 
-		if (rules[symbolOne].beats.indexOf(symbolTwo) > -1) {
+		if (symbol(rules[symbolOne]).beats(symbolTwo)) {
 			return 1;
 		}
-		if (rules[symbolTwo].beats.indexOf(symbolOne) > -1) {
+
+		if (symbol(rules[symbolTwo]).beats(symbolOne)) {
 			return 2;
 		}
+
 		return 0;
 	};
 }
