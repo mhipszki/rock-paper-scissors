@@ -1,5 +1,7 @@
 # TODOS
 
+- use injectable shufflers in computer module to choose a symbol, instead of inline Math.random()
+
 - add computer module to provide random chosen symbol
 
 - add basic UI for the player to select symbol
