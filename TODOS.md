@@ -1,7 +1,5 @@
 # TODOS
 
-- remove duplicate test examples in specs
-
 - use array instead of object wrapper around symbol list
 
 - symbol definition validator should explicitly check existence and type of `beats` property
