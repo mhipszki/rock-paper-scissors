@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	invalidType: 'rule definitions must be provieded in an object',
+	invalidType: 'rule definitions must be provided in an object',
 	empty: 'rules must contain at least one rule',
 	rule: {
 		invalidType: 'each rule must be an object',
