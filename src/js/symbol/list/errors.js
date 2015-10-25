@@ -1,11 +1,11 @@
 'use strict';
 
 module.exports = {
-	invalidType: 'rule definitions must be provided in an object',
-	empty: 'rules must contain at least one rule',
+	invalidType: 'symbol definitions must be provided in an object',
+	empty: 'symbol list must contain at least one symbol definition',
 	symbol: {
 		beats: {
-			nonExistentSymbol: 'each rule must define existing symbols as beatable'
+			nonExistentSymbol: 'each symbol definition must refer to existing symbols as beatable'
 		}
 	}
 };

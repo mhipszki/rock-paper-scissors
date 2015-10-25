@@ -1,6 +1,5 @@
 # TODOS
 
-- rename rules to symbol list
 - use symbol objects as input in symbol comparator function
 
 - extend rules structure to define beatable symbols with a corresponding winning message

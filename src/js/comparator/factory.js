@@ -7,20 +7,20 @@ function symbol (definition) {
 	return new Symbol(definition);
 }
 
-function comparatorFactory (rules, validate) {
+function comparatorFactory (symbolDefinitions, validate) {
 
-	validate(rules);
+	validate(symbolDefinitions);
 
 	return function compare (symbolOne, symbolTwo) {
 		if (typeof symbolOne !== 'string' || typeof symbolTwo !== 'string') {
 			throw new Error(errors.invalidArgs);
 		}
 
-		if (symbol(rules[symbolOne]).beats(symbolTwo)) {
+		if (symbol(symbolDefinitions[symbolOne]).beats(symbolTwo)) {
 			return 1;
 		}
 
-		if (symbol(rules[symbolTwo]).beats(symbolOne)) {
+		if (symbol(symbolDefinitions[symbolTwo]).beats(symbolOne)) {
 			return 2;
 		}
 

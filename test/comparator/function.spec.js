@@ -8,7 +8,7 @@ describe('symbol comparator', function () {
 
 	describe('function', function () {
 
-		var rules = {
+		var symbolDefinitions = {
 			'A': { symbol: 'A', beats: ['B'] },
 			'B': { symbol: 'B', beats: ['C'] },
 			'C': { symbol: 'C', beats: ['A'] }
@@ -17,7 +17,7 @@ describe('symbol comparator', function () {
 		var compare;
 
 		beforeEach(function () {
-			compare = generateComparatorWith(rules, validator);
+			compare = generateComparatorWith(symbolDefinitions, validator);
 		});
 
 		describe('when provided with invalid symbols', function () {

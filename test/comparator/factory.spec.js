@@ -10,19 +10,19 @@ describe('symbol comparator', function () {
 			function fakeValidator () {
 				return true;
 			}
-			var compare = generateComparatorWith('some rules', fakeValidator);
+			var compare = generateComparatorWith('symbol definitions', fakeValidator);
 			expect(compare).to.be.an.instanceof(Function);
 		});
 
-		it('should validate rules', function () {
+		it('should validate symbol definitions', function () {
 			var validatorHasBeenCalledWith;
 
-			function validatorSpy (rules) {
-				validatorHasBeenCalledWith = rules;
+			function validatorSpy (symbolDefinitions) {
+				validatorHasBeenCalledWith = symbolDefinitions;
 			}
-			generateComparatorWith('some rules', validatorSpy);
+			generateComparatorWith('symbol definitions', validatorSpy);
 
-			expect(validatorHasBeenCalledWith).to.equal('some rules');
+			expect(validatorHasBeenCalledWith).to.equal('symbol definitions');
 		});
 
 	});
