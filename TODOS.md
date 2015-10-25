@@ -2,6 +2,8 @@
 
 - add game module to provide outcome using chosen symbols based on definitons
 
+- change outcomeDecorator's method signiture (outcome first)
+
 - add computer module to provide random chosen symbol
 
 - add basic UI for the player to select symbol
