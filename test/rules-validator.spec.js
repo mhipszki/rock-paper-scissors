@@ -9,22 +9,22 @@ var errors = {
 	}
 };
 
-function validate (ruleDefinitions) {
-	if (typeof ruleDefinitions !== 'object') {
+function validate (rules) {
+	if (typeof rules !== 'object') {
 		throw new Error(errors.invalidType);
 	}
 
-	var rules = Object.keys(ruleDefinitions);
-	if (rules.length === 0) {
+	var symbols = Object.keys(rules);
+	if (symbols.length === 0) {
 		throw new Error(errors.empty);
 	}
 
-	rules.forEach(function (rule) {
-		var definition = ruleDefinitions[rule];
-		if (typeof definition !== 'object') {
+	symbols.forEach(function (symbol) {
+		var rule = rules[symbol];
+		if (typeof rule !== 'object') {
 			throw new Error(errors.rule.invalidType);
 		}
-		if (!(definition.beats instanceof Array)) {
+		if (!(rule.beats instanceof Array)) {
 			throw new Error(errors.rule.missingBeats);
 		}
 	});
