@@ -1,7 +1,7 @@
 'use strict';
 
-var Symbol = require('../src/js/symbol');
-var errors = require('../src/js/symbol/definition/errors');
+var Symbol = require('../../src/js/symbol/symbol');
+var errors = require('../../src/js/symbol/definition/errors');
 
 describe('symbol', function () {
 

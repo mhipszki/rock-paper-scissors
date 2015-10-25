@@ -1,6 +1,6 @@
 'use strict';
 
-var Symbol = require('../../symbol');
+var Symbol = require('../symbol');
 var errors = require('./errors');
 
 function comparatorFactory (symbolDefinitions, validate) {
