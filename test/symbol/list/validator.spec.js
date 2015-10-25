@@ -1,7 +1,7 @@
 'use strict';
 
-var validate = require('../src/js/rules/validator');
-var errors = require('../src/js/rules/errors');
+var validate = require('../../../src/js/symbol/list/validator');
+var errors = require('../../../src/js/symbol/list/errors');
 
 describe('rules validator', function () {
 

@@ -2,7 +2,7 @@
 
 var generateComparatorWith = require('../../src/js/comparator/factory');
 var errors = require('../../src/js/comparator/errors');
-var validator = require('../../src/js/rules/validator');
+var validator = require('../../src/js/symbol/list/validator');
 
 describe('symbol comparator', function () {
 

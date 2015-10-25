@@ -1,6 +1,6 @@
 'use strict';
 
-var validateSymbol = require('../symbol/definition/validator');
+var validateSymbol = require('../definition/validator');
 var errors = require('./errors');
 
 module.exports = function validate (rules) {
