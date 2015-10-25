@@ -1,8 +1,8 @@
 'use strict';
 
-var generateComparatorWith = require('../../src/js/comparator/factory');
-var errors = require('../../src/js/comparator/errors');
-var validator = require('../../src/js/symbol/list/validator');
+var generateComparatorWith = require('../../../src/js/symbol/comparator/factory');
+var errors = require('../../../src/js/symbol/comparator/errors');
+var validator = require('../../../src/js/symbol/list/validator');
 
 describe('symbol comparator', function () {
 
