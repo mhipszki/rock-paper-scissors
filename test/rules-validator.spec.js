@@ -1,52 +1,7 @@
 'use strict';
 
-var errors = {
-	invalidType: 'rule definitions must be provieded in an object',
-	empty: 'rules must contain at least one rule',
-	rule: {
-		invalidType: 'each rule must be an object',
-		missingBeats: 'each rule must define beatable symbols',
-		beats: {
-			empty: 'each rule must define at least one beatable symbol',
-			nonExistentSymbol: 'each rule must define existing symbols as beatable'
-		}
-	}
-};
-
-function validate (rules) {
-	if (typeof rules !== 'object') {
-		throw new Error(errors.invalidType);
-	}
-
-	var symbols = Object.keys(rules);
-	if (symbols.length === 0) {
-		throw new Error(errors.empty);
-	}
-
-	symbols.forEach(function (symbol) {
-		var rule = rules[symbol];
-		if (typeof rule !== 'object') {
-			throw new Error(errors.rule.invalidType);
-		}
-		if (!(rule.beats instanceof Array)) {
-			throw new Error(errors.rule.missingBeats);
-		}
-
-		if (rule.beats.length === 0) {
-			throw new Error(errors.rule.beats.empty);
-		}
-
-		var nonExistentSymbolUsed = rule.beats.some(function (beatable) {
-			return symbols.indexOf(beatable) === -1;
-		});
-
-		if (nonExistentSymbolUsed) {
-			throw new Error(errors.rule.beats.nonExistentSymbol);
-		}
-	});
-
-	return true;
-}
+var validate = require('../src/js/rules/validator');
+var errors = require('../src/js/rules/errors');
 
 describe('rules validator', function () {
 
