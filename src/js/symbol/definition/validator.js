@@ -15,8 +15,12 @@ module.exports = function validate (definition) {
 		throw new Error(errors.name.invalidType);
 	}
 
-	if (!(definition.beats instanceof Array)) {
+	if (typeof definition.beats === 'undefined') {
 		throw new Error(errors.beats.missing);
+	}
+
+	if (!(definition.beats instanceof Array)) {
+		throw new Error(errors.beats.invalidType);
 	}
 
 	if (definition.beats.length === 0) {

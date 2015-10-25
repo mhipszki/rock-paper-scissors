@@ -62,6 +62,17 @@ describe('symbol definition validator', function () {
 			expect(validation).to.throw(errors.beats.missing);
 		});
 
+		it('must define a list of symbols as an Array', function () {
+			function validation () {
+				var definition = {
+					symbol: 'a symbol',
+					beats: 'not an array'
+				};
+				return validate(definition);
+			}
+			expect(validation).to.throw(errors.beats.invalidType);
+		});
+
 		it('must define at least one beatable symbol', function () {
 			function validation () {
 				var definition = {
