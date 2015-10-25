@@ -1,6 +1,5 @@
 # TODOS
 
-- extract symbol factory to its own modules along with unit tests
 - split rules validator into rules definition and symbol definition validators
 - use symbol definition validator in symbol factory
 - use symbol objects as input in symbol comparator function

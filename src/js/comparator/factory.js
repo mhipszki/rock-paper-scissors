@@ -1,13 +1,10 @@
 'use strict';
 
+var Symbol = require('../symbol');
 var errors = require('./errors');
 
 function symbol (definition) {
-	return {
-		beats: function (symbolToBeat) {
-			return definition.beats.indexOf(symbolToBeat) > -1;
-		}
-	};
+	return new Symbol(definition);
 }
 
 function comparatorFactory (rules, validate) {
