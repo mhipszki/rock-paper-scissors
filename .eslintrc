@@ -2,7 +2,8 @@
 	"extends": "eslint:recommended",
 
 	"env": {
-        "browser": true
+        "browser": true,
+		"node": true
     },
 
     "rules": {
@@ -47,7 +48,7 @@
         "eqeqeq":                   [ 2 ],
 
         // Enforce Strict Mode
-        "strict":                   [ 2, "function" ],
+        "strict":                   [ 2, "global" ],
 
         // Require Guarding for-in
         "guard-for-in":             [ 2 ],
