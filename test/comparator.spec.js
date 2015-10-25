@@ -1,14 +1,17 @@
 'use strict';
 
 var rules = {
-	'A': {
-		beats: ['B']
-	}
+	'A': { beats: ['B'] },
+	'B': { beats: ['C'] },
+	'C': { beats: ['A'] }
 };
 
 function compare (symbolOne, symbolTwo) {
 	if (rules[symbolOne].beats.indexOf(symbolTwo) > -1) {
 		return 1;
+	}
+	if (rules[symbolTwo].beats.indexOf(symbolOne) > -1) {
+		return 2;
 	}
 	return 0;
 }
@@ -31,6 +34,15 @@ describe('symbol comparator', function () {
 			it('should return 1', function () {
 				var outcome = compare('A', 'B');
 				expect(outcome).to.equal(1);
+			});
+
+		});
+
+		describe('and the 2st symbol beats the 1nd', function () {
+
+			it('should return 2', function () {
+				var outcome = compare('A', 'C');
+				expect(outcome).to.equal(2);
 			});
 
 		});
