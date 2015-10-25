@@ -1,6 +1,6 @@
 'use strict';
 
-var errors = require('./comparator-errors');
+var errors = require('./errors');
 
 function comparatorFactory (rules) {
 

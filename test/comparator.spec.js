@@ -1,7 +1,7 @@
 'use strict';
 
-var generateComparatorWith = require('../src/js/comparator-factory');
-var errors = require('../src/js/comparator-errors');
+var generateComparatorWith = require('../src/js/comparator/factory');
+var errors = require('../src/js/comparator/errors');
 
 describe('symbol comparator', function () {
 
