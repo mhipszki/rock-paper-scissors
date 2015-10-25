@@ -2,6 +2,8 @@
 
 - extend symbol definitions to define beatable symbols with a corresponding winning message
 
+- use array instead of object wrapper around symbol list
+
 - symbol definition validator should explicitly check existence and type of `beats` property
 
 - add outcome decorator to transform an outcome into a human readable message e.g. 0 => 'tie', 1 => 'A has beaten B'
