@@ -16,6 +16,14 @@ describe('symbol comparator', function () {
 		compare = comparatorFactory(rules);
 	});
 
+	describe('factory', function () {
+
+		it('should return a comparator function', function () {
+			expect(compare).to.be.an.instanceof(Function);
+		});
+
+	});
+
 	describe('when provided with the same symbols', function () {
 
 		it('should return 0', function () {
