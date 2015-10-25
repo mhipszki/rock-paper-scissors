@@ -2,6 +2,7 @@
 
 var generateComparatorWith = require('../src/js/comparator/factory');
 var errors = require('../src/js/comparator/errors');
+var validator = require('../src/js/rules/validator');
 
 describe('symbol comparator', function () {
 
@@ -14,13 +15,24 @@ describe('symbol comparator', function () {
 	var compare;
 
 	beforeEach(function () {
-		compare = generateComparatorWith(rules);
+		compare = generateComparatorWith(rules, validator);
 	});
 
 	describe('factory', function () {
 
 		it('should return a comparator function', function () {
 			expect(compare).to.be.an.instanceof(Function);
+		});
+
+		it('should validate rules', function () {
+			var validatorHasBeenCalledWith;
+
+			function validatorSpy (rules) {
+				validatorHasBeenCalledWith = rules;
+			}
+			compare = generateComparatorWith(rules, validatorSpy);
+
+			expect(validatorHasBeenCalledWith).to.equal(rules);
 		});
 
 	});

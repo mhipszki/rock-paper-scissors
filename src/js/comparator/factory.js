@@ -2,7 +2,9 @@
 
 var errors = require('./errors');
 
-function comparatorFactory (rules) {
+function comparatorFactory (rules, validate) {
+
+	validate(rules);
 
 	return function compare (symbolOne, symbolTwo) {
 		if (typeof symbolOne !== 'string' || typeof symbolTwo !== 'string') {
