@@ -24,13 +24,12 @@ var symbolDefinitions = [
 	}
 ];
 
-var game = generateGameWith(symbolDefinitions);
+function play (s1, s2) {
+	var game = generateGameWith(symbolDefinitions);
+	game.play(s1, s2);
+	console.log(s1, s2, '=>', game.message());
+}
 
-game.play('rock', 'scissors');
-console.log('rock', 'scissors', '=>', game.message());
-
-game.play('rock', 'paper');
-console.log('rock', 'paper', '=>', game.message());
-
-game.play('rock', 'rock');
-console.log('rock', 'rock', '=>', game.message());
+play('rock', 'scissors');
+play('rock', 'paper');
+play('rock', 'rock');
