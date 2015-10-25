@@ -1,5 +1,17 @@
 # TODOS
 
-- add outcome decorator to transform an outcome into a human readable message e.g. 0 => 'tie', 1 => 'A has beaten B'
+- add game module to provide outcome using chosen symbols based on definitons
 
-- there must be at least 2 symbols defined in a real game, to have different outcomes i.e. a winner/loser or a tie
+- add computer module to provide random chosen symbol
+
+- add basic UI for the player to select symbol
+
+- on selection of a symbol, run the game with a computer opponent
+
+- when computer is selected on UI instead of a symbol, play the game with computer vs computer
+
+- describe basic architecture in README
+
+- describe used scripts in README
+
+- describe how to clone, install, build and serve the project in README
