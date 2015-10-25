@@ -1,22 +1,31 @@
 'use strict';
 
-var rules = {
-	'A': { beats: ['B'] },
-	'B': { beats: ['C'] },
-	'C': { beats: ['A'] }
-};
+function comparatorFactory (rules) {
 
-function compare (symbolOne, symbolTwo) {
-	if (rules[symbolOne].beats.indexOf(symbolTwo) > -1) {
-		return 1;
-	}
-	if (rules[symbolTwo].beats.indexOf(symbolOne) > -1) {
-		return 2;
-	}
-	return 0;
+	return function compare (symbolOne, symbolTwo) {
+		if (rules[symbolOne].beats.indexOf(symbolTwo) > -1) {
+			return 1;
+		}
+		if (rules[symbolTwo].beats.indexOf(symbolOne) > -1) {
+			return 2;
+		}
+		return 0;
+	};
 }
 
 describe('symbol comparator', function () {
+
+	var rules = {
+		'A': { beats: ['B'] },
+		'B': { beats: ['C'] },
+		'C': { beats: ['A'] }
+	};
+
+	var compare;
+
+	beforeEach(function () {
+		compare = comparatorFactory(rules);
+	});
 
 	describe('when provided with the same symbols', function () {
 
