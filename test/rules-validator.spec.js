@@ -2,9 +2,9 @@
 
 var errors = {
 	invalidType: 'rule definitions must be provieded in an object',
-	invalidRuleType: 'each rule must be an object',
-	noRulesDefined: 'rules must contain at least one rule',
+	empty: 'rules must contain at least one rule',
 	rule: {
+		invalidType: 'each rule must be an object',
 		missingBeats: 'each rule must define beatable symbols'
 	}
 };
@@ -16,13 +16,13 @@ function validate (ruleDefinitions) {
 
 	var rules = Object.keys(ruleDefinitions);
 	if (rules.length === 0) {
-		throw new Error(errors.noRulesDefined);
+		throw new Error(errors.empty);
 	}
 
 	rules.forEach(function (rule) {
 		var definition = ruleDefinitions[rule];
 		if (typeof definition !== 'object') {
-			throw new Error(errors.invalidRuleType);
+			throw new Error(errors.rule.invalidType);
 		}
 		if (!(definition.beats instanceof Array)) {
 			throw new Error(errors.rule.missingBeats);
@@ -63,7 +63,7 @@ describe('rules validator', function () {
 				var rules = {};
 				return validate(rules);
 			}
-			expect(validation).to.throw(errors.noRulesDefined);
+			expect(validation).to.throw(errors.empty);
 		});
 
 	});
@@ -77,7 +77,7 @@ describe('rules validator', function () {
 				};
 				return validate(rules);
 			}
-			expect(validation).to.throw(errors.invalidRuleType);
+			expect(validation).to.throw(errors.rule.invalidType);
 		});
 
 		it('must contain a list of symbols can be beaten by a symbol', function () {
