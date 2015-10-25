@@ -7,6 +7,7 @@ var errors = {
 		invalidType: 'each rule must be an object',
 		missingBeats: 'each rule must define beatable symbols',
 		beats: {
+			empty: 'each rule must define at least one beatable symbol',
 			nonExistentSymbol: 'each rule must define existing symbols as beatable'
 		}
 	}
@@ -29,6 +30,10 @@ function validate (rules) {
 		}
 		if (!(rule.beats instanceof Array)) {
 			throw new Error(errors.rule.missingBeats);
+		}
+
+		if (rule.beats.length === 0) {
+			throw new Error(errors.rule.beats.empty);
 		}
 
 		var nonExistentSymbolUsed = rule.beats.some(function (beatable) {
@@ -109,6 +114,18 @@ describe('rules validator', function () {
 	});
 
 	describe('any list of beatable symbols', function () {
+
+		it('must contain at least one symbol', function () {
+			function validation () {
+				var rules = {
+					'symbol A': {
+						beats: []
+					}
+				};
+				return validate(rules);
+			}
+			expect(validation).to.throw(errors.rule.beats.empty);
+		});
 
 		it('must only contain defined symbols', function () {
 			function validation () {
