@@ -2,20 +2,16 @@
 
 var Symbol = require('../symbol');
 var errors = require('./errors');
+var generateFinderWith = require('../finder-factory');
 
 function comparatorFactory (symbolDefinitions, validate) {
 
 	validate(symbolDefinitions);
 
-	function findSymbolDefinitionBy (name) {
-		var matches = symbolDefinitions.filter(function (definition) {
-			return definition.symbol === name;
-		});
-		return matches[0];
-	}
+	var findBy = generateFinderWith(symbolDefinitions);
 
 	function symbol (name) {
-		var definition = findSymbolDefinitionBy(name);
+		var definition = findBy(name);
 		return new Symbol(definition);
 	}
 
