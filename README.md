@@ -22,3 +22,36 @@ http://en.wikipedia.org/wiki/Rock-paper-scissors
 - accessible code
 - unit tests
 - documentation
+
+## Actors
+
+Actors can play against each other by choosing one of the following symbols:
+
+- rock
+- paper
+- scissors
+
+at the same time.
+
+### Player
+
+Can select a game type:
+
+- player vs computer
+- computer vs computer
+
+### Computer
+
+Can play against a player or another computer. It makes its choice randomly from the available symbols.
+
+## Game types
+
+### Player vs Computer
+
+When a player is playing against a computer, the player chooses one from the available symbols, the computer waits for the player's choice and makes its choice, then the symbols are compared.
+
+From the player's point of view, the computer makes its choice at the same time the player does.
+
+### Computer vs Computer
+
+When a computer playing against another computer, both computers make their choice, then the symbols are compared.
