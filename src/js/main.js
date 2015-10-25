@@ -1,6 +1,6 @@
 'use strict';
 
-var generateGameWith = require('./game');
+var generateGameWith = require('./game-factory');
 
 var symbolDefinitions = [
 	{

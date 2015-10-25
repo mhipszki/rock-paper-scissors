@@ -1,6 +1,6 @@
 'use strict';
 
-var generateGameWith = require('../src/js/game');
+var generateGameWith = require('../src/js/game-factory');
 var errors = require('../src/js/symbol/list/errors');
 
 describe('game', function () {
