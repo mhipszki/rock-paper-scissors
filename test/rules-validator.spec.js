@@ -5,7 +5,10 @@ var errors = {
 	empty: 'rules must contain at least one rule',
 	rule: {
 		invalidType: 'each rule must be an object',
-		missingBeats: 'each rule must define beatable symbols'
+		missingBeats: 'each rule must define beatable symbols',
+		beats: {
+			nonExistentSymbol: 'each rule must define existing symbols as beatable'
+		}
 	}
 };
 
@@ -27,6 +30,14 @@ function validate (rules) {
 		if (!(rule.beats instanceof Array)) {
 			throw new Error(errors.rule.missingBeats);
 		}
+
+		var nonExistentSymbolUsed = rule.beats.some(function (beatable) {
+			return symbols.indexOf(beatable) === -1;
+		});
+
+		if (nonExistentSymbolUsed) {
+			throw new Error(errors.rule.beats.nonExistentSymbol);
+		}
 	});
 
 	return true;
@@ -38,8 +49,11 @@ describe('rules validator', function () {
 
 		it('should return true', function () {
 			var rules = {
-				'symbol': {
-					beats: ['other','symbols']
+				'symbol A': {
+					beats: ['symbol B']
+				},
+				'symbol B': {
+					beats: ['symbol A']
 				}
 			};
 			var result = validate(rules);
@@ -90,6 +104,22 @@ describe('rules validator', function () {
 				return validate(rules);
 			}
 			expect(validation).to.throw(errors.rule.missingBeats);
+		});
+
+	});
+
+	describe('any list of beatable symbols', function () {
+
+		it('must only contain defined symbols', function () {
+			function validation () {
+				var rules = {
+					'symbol A': {
+						beats: ['symbol B']
+					}
+				};
+				return validate(rules);
+			}
+			expect(validation).to.throw(errors.rule.beats.nonExistentSymbol);
 		});
 
 	});
