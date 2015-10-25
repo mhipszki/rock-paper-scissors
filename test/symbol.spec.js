@@ -1,6 +1,7 @@
 'use strict';
 
 var Symbol = require('../src/js/symbol');
+var errors = require('../src/js/symbol/definition/errors');
 
 describe('symbol', function () {
 
@@ -8,14 +9,27 @@ describe('symbol', function () {
 		return new Symbol(definition);
 	}
 
+	it('should validate its definition', function () {
+		function instantiation () {
+			return generateSymbolFrom('invalid definition');
+		}
+		expect(instantiation).to.throw(errors.invalidType);
+	});
+
 	it('should store its definition', function () {
-		var definition = { a: 'symbol definition' };
+		var definition = {
+			symbol: 'a symbol',
+			beats: ['another symbol']
+		};
 		var symbol = generateSymbolFrom(definition);
 		expect(symbol.definition).to.deep.equal(definition);
 	});
 
 	it('should not alter the definition', function () {
-		var definition = { a: 'symbol definition' };
+		var definition = {
+			symbol: 'a symbol',
+			beats: ['another symbol']
+		};
 		var originalDefinition = JSON.stringify(definition);
 		var symbol = generateSymbolFrom(definition);
 		expect(JSON.stringify(symbol.definition)).to.equal(originalDefinition);
@@ -27,10 +41,11 @@ describe('symbol', function () {
 
 			it('should return true', function () {
 				var definition = {
-					beats: ['other symbol']
+					symbol: 'a symbol',
+					beats: ['another symbol']
 				};
 				var symbol = generateSymbolFrom(definition);
-				var canBeBeaten = symbol.beats('other symbol');
+				var canBeBeaten = symbol.beats('another symbol');
 				expect(canBeBeaten).to.be.true;
 			});
 
@@ -40,10 +55,11 @@ describe('symbol', function () {
 
 			it('should return false', function () {
 				var definition = {
+					symbol: 'a symbol',
 					beats: ['a beatable symbol']
 				};
 				var symbol = generateSymbolFrom(definition);
-				var canBeBeaten = symbol.beats('other symbol');
+				var canBeBeaten = symbol.beats('another symbol');
 				expect(canBeBeaten).to.be.false;
 			});
 

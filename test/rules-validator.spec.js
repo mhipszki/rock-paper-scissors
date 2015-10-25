@@ -10,9 +10,11 @@ describe('rules validator', function () {
 		it('should return true', function () {
 			var rules = {
 				'symbol A': {
+					symbol: 'symbol A',
 					beats: ['symbol B']
 				},
 				'symbol B': {
+					symbol: 'symbol B',
 					beats: ['symbol A']
 				}
 			};
@@ -48,6 +50,7 @@ describe('rules validator', function () {
 			function validation () {
 				var rules = {
 					'symbol A': {
+						symbol: 'symbol A',
 						beats: ['symbol B']
 					}
 				};

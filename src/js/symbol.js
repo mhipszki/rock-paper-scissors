@@ -1,6 +1,9 @@
 'use strict';
 
+var validate = require('./symbol/definition/validator');
+
 function Symbol (definition) {
+	validate(definition);
 	this.definition = definition;
 }
 

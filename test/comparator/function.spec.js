@@ -9,9 +9,9 @@ describe('symbol comparator', function () {
 	describe('function', function () {
 
 		var rules = {
-			'A': { beats: ['B'] },
-			'B': { beats: ['C'] },
-			'C': { beats: ['A'] }
+			'A': { symbol: 'A', beats: ['B'] },
+			'B': { symbol: 'B', beats: ['C'] },
+			'C': { symbol: 'C', beats: ['A'] }
 		};
 
 		var compare;
