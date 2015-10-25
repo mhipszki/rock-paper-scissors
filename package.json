@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "eslint src/ test/ && echo '\n...linting JS OK\n'",
     "pretest": "npm run lint -s",
-    "test": "karma start --singleRun"
+    "test": "karma start --singleRun",
+    "watch": "nodemon -q -e js -w src -w test --exec 'npm run test -s'"
   },
   "devDependencies": {
     "chai": "^3.4.0",
@@ -22,6 +23,7 @@
     "karma-mocha-reporter": "^1.1.1",
     "karma-phantomjs-launcher": "^0.2.1",
     "mocha": "^2.3.3",
+    "nodemon": "^1.8.0",
     "phantomjs": "^1.9.18"
   }
 }
