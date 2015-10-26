@@ -27,14 +27,19 @@ var symbolDefinitions = [
 
 var select = document.querySelector('.available-symbols');
 select.addEventListener('change', function (event) {
+	var selectedIndex = event.target.selectedIndex;
 	var chosenSymbol = event.target.value;
-	if (chosenSymbol !== 'null') {
+	if (selectedIndex > 0) {
 		playAgainstComputer(chosenSymbol);
 	}
 });
 
 var button = document.querySelector('button');
 button.addEventListener('click', computerVsComputer);
+
+var computerChoice = document.querySelector('.outcome h3');
+var message = document.querySelector('.outcome p');
+var outcome = document.querySelector('.outcome h1');
 
 function playAgainstComputer (s1) {
 	var game = generateGameWith(symbolDefinitions);
@@ -57,14 +62,9 @@ function playAgainstComputer (s1) {
 		break;
 	}
 
-	var outcome = document.querySelector('.outcome h1');
-	outcome.textContent = playerMessage;
-
-	var computerChoice = document.querySelector('.outcome h3');
 	computerChoice.textContent = 'The computer has chosen '+s2;
-
-	var message = document.querySelector('.outcome p');
 	message.textContent = game.message();
+	outcome.textContent = playerMessage;
 
 	select.selectedIndex = 0;
 }
@@ -92,12 +92,7 @@ function computerVsComputer () {
 		break;
 	}
 
-	var outcome = document.querySelector('.outcome h1');
-	outcome.textContent = playerMessage;
-
-	var computerChoice = document.querySelector('.outcome h3');
 	computerChoice.textContent = 'The computer1 has chosen '+s1+', computer2 has chosen '+s2;
-
-	var message = document.querySelector('.outcome p');
 	message.textContent = game.message();
+	outcome.textContent = playerMessage;
 }
