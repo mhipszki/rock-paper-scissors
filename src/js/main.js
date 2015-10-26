@@ -25,12 +25,6 @@ var symbolDefinitions = [
 	}
 ];
 
-function play (s1, s2) {
-	var game = generateGameWith(symbolDefinitions);
-	game.play(s1, s2);
-	console.log(s1, s2, '=>', game.message());
-}
-
 function playAgainstComputer (s1) {
 	var game = generateGameWith(symbolDefinitions);
 	var computer = generateComputerOpponentWith(symbolDefinitions);
@@ -39,10 +33,10 @@ function playAgainstComputer (s1) {
 	console.log(s1, s2, '=>', game.message());
 }
 
-play('rock', 'scissors');
-play('rock', 'paper');
-play('rock', 'rock');
-
-playAgainstComputer('scissors');
-playAgainstComputer('scissors');
-playAgainstComputer('scissors');
+var select = document.querySelector('.available-symbols');
+select.addEventListener('change', function (event) {
+	var chosenSymbol = event.target.value;
+	if (chosenSymbol !== 'null') {
+		playAgainstComputer(chosenSymbol);
+	}
+});
