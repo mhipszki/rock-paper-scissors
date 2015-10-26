@@ -7,11 +7,14 @@
     "lint": "eslint src/ test/ && echo '\n...linting JS OK\n'",
     "pretest": "npm run lint -s",
     "test": "karma start --singleRun",
+    "posttest": "npm run build",
     "watch": "nodemon -q -e js -w src -w test --exec 'npm run test -s'",
     "prebuild": "mkdir -p dist/js",
     "build": "browserify -e src/js/main.js -d | exorcist dist/js/main.js.map > dist/js/main.js",
-    "postbuild": "cp src/index.html dist/index.html",
-    "serve": "http-server -p 9090 dist/"
+    "postbuild": "cp src/index.html dist/index.html && echo '\n...build DONE\n'",
+    "serve": "http-server -p 9090 dist/",
+    "open:dev": "opener http://localhost:9090",
+    "dev": "npm run open:dev -s && parallelshell \"npm run serve -s\" \"npm run watch -s\""
   },
   "devDependencies": {
     "browserify": "^11.2.0",
@@ -31,6 +34,8 @@
     "karma-phantomjs-launcher": "^0.2.1",
     "mocha": "^2.3.3",
     "nodemon": "^1.8.0",
+    "opener": "^1.4.1",
+    "parallelshell": "^2.0.0",
     "phantomjs": "^1.9.18"
   }
 }
