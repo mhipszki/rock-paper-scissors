@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "author": "Marton Hipszki <mhipszki@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhipszki/rock-paper-scissors.git"
+  },
   "scripts": {
     "lint": "eslint src/ test/ && echo '\n...linting JS OK\n'",
     "pretest": "npm run lint -s",
@@ -13,8 +17,8 @@
     "build": "browserify -e src/js/main.js -d | exorcist dist/js/main.js.map > dist/js/main.js",
     "postbuild": "cp src/index.html dist/index.html && echo '\n...build DONE\n'",
     "serve": "http-server -p 9090 dist/",
-    "open:dev": "opener http://localhost:9090",
-    "dev": "npm run open:dev -s && parallelshell \"npm run serve -s\" \"npm run watch -s\""
+    "open": "opener http://localhost:9090",
+    "dev": "npm run open -s && parallelshell \"npm run serve -s\" \"npm run watch -s\""
   },
   "devDependencies": {
     "browserify": "^11.2.0",
