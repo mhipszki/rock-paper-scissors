@@ -1,7 +1,5 @@
 # TODOS
 
-- when computer is selected on UI instead of a symbol, play the game with computer vs computer
-
 - describe basic architecture in README
 
 - describe used scripts in README
