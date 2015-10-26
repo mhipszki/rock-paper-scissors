@@ -1,8 +1,6 @@
 # TODOS
 
-- add basic UI for the player to select symbol
-
-- on selection of a symbol, run the game with a computer opponent
+- add basic UI to show the game result
 
 - when computer is selected on UI instead of a symbol, play the game with computer vs computer
 
