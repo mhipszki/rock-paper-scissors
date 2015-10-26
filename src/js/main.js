@@ -9,18 +9,45 @@ var symbolDefinitions = [
 		beats: [{
 			symbol: 'scissors',
 			message: 'rock crushes scissors'
+		},{
+			symbol: 'lizard',
+			message: 'rock crushes lizard'
 		}]
 	}, {
 		symbol: 'paper',
 		beats: [{
 			symbol: 'rock',
 			message: 'paper covers rock'
+		},{
+			symbol: 'Spock',
+			message: 'paper dispoves Spock'
 		}]
 	}, {
 		symbol: 'scissors',
 		beats: [{
 			symbol: 'paper',
 			message: 'scissors cut paper'
+		},{
+			symbol: 'lizard',
+			message: 'scissors decapitates lizard'
+		}]
+	}, {
+		symbol: 'lizard',
+		beats: [{
+			symbol: 'Spock',
+			message: 'lizard poisons Spock'
+		},{
+			symbol: 'paper',
+			message: 'lizard eats paper'
+		}]
+	}, {
+		symbol: 'Spock',
+		beats: [{
+			symbol: 'scissors',
+			message: 'Spock smashes scissors'
+		},{
+			symbol: 'rock',
+			message: 'Spock vaporizes rock'
 		}]
 	}
 ];
